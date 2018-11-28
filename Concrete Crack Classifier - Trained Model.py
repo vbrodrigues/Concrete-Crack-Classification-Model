@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 IMG_SIZE = 128
+img_to_prepare = "" #Insert the path to the image file you want to predict
 
 def prepare_image(file):
     img = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
@@ -13,24 +14,22 @@ def prepare_image(file):
     return img.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
 
 print("Loading trained model...")
-model = tf.keras.models.load_model(".../Concrete_Crack_Classification_model.model") #Replace the dots with the directory
+model = tf.keras.models.load_model(".../Concrete_Crack_Classification_model.model") #Replace the dots with the directory you saved the model in
 print("Trained model loaded!")
 print("Model evaluation after training: loss: 0.0528 - acc: 0.9828 - val_loss: 0.0573 - val_acc: 0.9860")
 
 print("Model predicting...")
 #Insert your image file inside the double quotes
-prediction = model.predict([prepare_image("")])
+prediction = model.predict([prepare_image(img_to_prepare)])
 
 if prediction[0][0] <= .5:
-    pred_text = "Previsão da Rede:\nEsta superfície de concreto POSSUI uma trinca."
-    # print("\nEste concreto POSSUI uma fissura.")
+    pred_text = "Networks prediction:\nThis surface DOES have a crack on it."
 elif prediction[0][0] > .5:
-    pred_text = "Previsão da Rede:\nEsta superfície de concreto NÃO POSSUI uma trinca."
-    # print("\nEste concreto NÃO POSSUI uma fissura.")
+    pred_text = "Networks prediction:\nThis surface DOES NOT have a crack on it."
 else:
-    print("\nOcorreu algum erro...")
+    print("\nSomething went wrong...")
     
 plt.imshow(cv2.resize(cv2.imread(img_to_predict), (IMG_SIZE, IMG_SIZE)))
-plt.title("O que a Rede Neural está recebendo como entrada:")
+plt.title("What the Neural Network is receiving as input:")
 plt.text(2, 5, pred_text, fontweight = "bold")
 plt.show()
