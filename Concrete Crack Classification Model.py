@@ -12,7 +12,7 @@ CATEGORIES = ["Positive", "Negative"]
 training_data = []
 
 print("Loading the data...")
-hf = h5py.File('D:/dev/Datasets/concrete_crack_image_data.h5', 'r')
+hf = h5py.File('.../concrete_crack_image_data.h5', 'r') #Replace the three dots with the directory you saved the dataset in
 X = np.array(hf.get('X_concrete'))
 y = np.array(hf.get("y_concrete"))
 hf.close()
@@ -46,5 +46,5 @@ model.fit(X, y, batch_size = 64, epochs = 3, validation_split = .2)
 print("Model successfully fitted!!")
 
 print("Saving the model...")
-model.save(".../Concrete_Crack_Classification_model.model") #Replace the dots with the directory
+model.save(".../Concrete_Crack_Classification_model.model") #Replace the dots with the directory you want to save the model in
 print("Model successfully saved!!")
