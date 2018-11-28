@@ -43,8 +43,8 @@ X = np.array(X_data).reshape(len(X_data), IMG_SIZE, IMG_SIZE, 1)
 print("X data successfully reshaped!!")
 
 print("Saving the data...")
-hf = h5py.File('D:/dev/Datasets/concrete_crack_image_data.h5', 'w')
-hf.create_dataset('X_concrete', data=X, compression="gzip")
-hf.create_dataset('y_concrete', data=y, compression="gzip")
+hf = h5py.File("", "w) #insert the directory you want to save your dataset
+hf.create_dataset("X_concrete", data = X, compression = "gzip")
+hf.create_dataset("y_concrete", data = y, compression = "gzip")
 hf.close()
 print("Data successfully saved!!")
