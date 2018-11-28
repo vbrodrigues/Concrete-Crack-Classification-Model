@@ -4,6 +4,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D
 import numpy as np
+import h5py
 
 DATADIR = "" #insert the directory you'll be working with
 IMG_SIZE = 128
