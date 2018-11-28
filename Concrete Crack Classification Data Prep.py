@@ -1,18 +1,13 @@
 print("Importing libraries...")
 
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D
 import cv2
 import numpy as np
-import sklearn.preprocessing
-import matplotlib.pyplot as plt
 import os
 import random
-import pickle
+import h5py
 
 DATADIR = "" #insert the directory you'll be working with
-IMG_SIZE = 50
+IMG_SIZE = 128
 CATEGORIES = ["Positive", "Negative"]
 training_data = []
 
@@ -48,11 +43,8 @@ X = np.array(X_data).reshape(len(X_data), IMG_SIZE, IMG_SIZE, 1)
 print("X data successfully reshaped!!")
 
 print("Saving the data...")
-pickle_out = open(".../X_concrete.pickle", "wb") #Replace the dots with the directory
-pickle.dump(X, pickle_out)
-pickle_out.close()
-
-pickle_out = open(".../y_concrete.pickle", "wb") #Replace the dots with the directory
-pickle.dump(y, pickle_out)
-pickle_out.close()
+hf = h5py.File('D:/dev/Datasets/concrete_crack_image_data.h5', 'w')
+hf.create_dataset('X_concrete', data=X, compression="gzip")
+hf.create_dataset('y_concrete', data=y, compression="gzip")
+hf.close()
 print("Data successfully saved!!")
