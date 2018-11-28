@@ -1,27 +1,25 @@
+print("Importing libraries...")
+
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D
-import cv2
 import numpy as np
-import sklearn.preprocessing
-import matplotlib.pyplot as plt
-import os
-import random
-import pickle
 
 DATADIR = "" #insert the directory you'll be working with
-IMG_SIZE = 50
+IMG_SIZE = 128
 CATEGORIES = ["Positive", "Negative"]
 training_data = []
 
 print("Loading the data...")
-pickle_in = open(".../X_concrete.pickle", "rb") #Replace the dots with the directory
-X = pickle.load(pickle_in)
-pickle_in = open(".../y_concrete.pickle", "rb") #Replace the dots with the directory
-y = pickle.load(pickle_in)
+hf = h5py.File('D:/dev/Datasets/concrete_crack_image_data.h5', 'r')
+X = np.array(hf.get('X_concrete'))
+y = np.array(hf.get("y_concrete"))
+hf.close()
 print("Data successfully loaded!")
 
-X = X / 255.0
+print("Scaling the data...!")
+X = X / 255
+print("Data successfully scaled!")
 
 model = Sequential()
 
@@ -43,7 +41,7 @@ model.compile(loss = "binary_crossentropy", optimizer = "adam", metrics = ["accu
 print("Model successfully compiled!!")
 
 print("Fitting the model...")
-model.fit(X, y, batch_size = 128, epochs = 3, validation_split = .2)
+model.fit(X, y, batch_size = 64, epochs = 3, validation_split = .2)
 print("Model successfully fitted!!")
 
 print("Saving the model...")
