@@ -20,5 +20,5 @@ This repository contains 3 python files. One for the data pre-processing, managi
 
 It uses a Convolutional Neural Network made with Tensorflow Keras API, using GPU for training. It's structured with 3 Convolutional layers, the first with 16 filters and the other two with 32 nodes, each one followed by Max Pooling and Dropout layers. Then, it has a Flatten layer followed by a Fully Connected layer with 64 nodes and finally the Output layer. The activation function used for all layers was ReLU (Rectified Linear Unit), except for the output layer where the Sigmoid function was used.
 
-Since it's a binary classification, the loss function used is binary cross-entropy. The optimizer used is Adam and the adopted batch size 32.
+Since it's a binary classification, the loss function used is binary cross-entropy. The optimizer used is Adam and the adopted batch size 64.
 
