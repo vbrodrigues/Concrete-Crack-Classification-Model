@@ -16,7 +16,6 @@ def prepare_image(file):
 print("Loading trained model...")
 model = tf.keras.models.load_model(".../Concrete_Crack_Classification_model.model") #Replace the dots with the directory you saved the model in
 print("Trained model loaded!")
-print("Model evaluation after training: loss: 0.0528 - acc: 0.9828 - val_loss: 0.0573 - val_acc: 0.9860")
 
 print("Model predicting...")
 #Insert your image file inside the double quotes
