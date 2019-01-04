@@ -34,4 +34,4 @@ IMPORTANT: Here, you'll also have to manually input some directories to save the
 ### Predicting with your own images - Concrete Crack Classifier - Trained Model.py
 With this script, you will be able to test the model with your own images. The program will handle image dimensions and colors, so you can simply especify the directory and image file name for it to work. The result plot will look something like this:
 
-![Trained CNN output](CNN output.png)
+![Trained CNN output](CNN_output.png)
