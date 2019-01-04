@@ -22,3 +22,16 @@ It uses a Convolutional Neural Network made with Tensorflow Keras API, using GPU
 
 Since it's a binary classification, the loss function used is binary cross-entropy. The optimizer used is Adam and the adopted batch size 64.
 
+## How to use the files
+### Preparing the data - Concrete Crack Classification Data Prep.py
+First, you have to run this Python script. Here, the data will be pre-processed. You'll need to have the image files from the dataset separated into two folders, one called "Positive" and the other called "Negative", with the respective image files in each one.
+IMPORTANT: There are strings that you'll have to manually change to the directory on your computer.
+
+### Training the model - Concrete Crack Classification Model.py
+Here, you will load the data that you prepered with the first script and train the CNN model. The model here is built using tf.Keras. This script will train and save the model in a file that you can load whenever you want (the next script will be doing this). 
+IMPORTANT: Here, you'll also have to manually input some directories to save the model and load the data saved previously.
+
+### Predicting with your own images - Concrete Crack Classifier - Trained Model.py
+With this script, you will be able to test the model with your own images. The program will handle image dimensions and colors, so you can simply especify the directory and image file name for it to work. The result plot will look something like this:
+
+![Trained CNN output](CNN output.png)
