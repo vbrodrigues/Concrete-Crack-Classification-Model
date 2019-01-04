@@ -6,10 +6,7 @@ from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D,
 import numpy as np
 import h5py
 
-DATADIR = "" #insert the directory you'll be working with
-IMG_SIZE = 128
-CATEGORIES = ["Positive", "Negative"]
-training_data = []
+img_size = 128
 
 print("Loading the data...")
 hf = h5py.File('.../concrete_crack_image_data.h5', 'r') #Replace the three dots with the directory you saved the dataset in
@@ -24,7 +21,7 @@ print("Data successfully scaled!")
 
 model = Sequential()
 
-model.add(Conv2D(16, (3, 3), activation = "relu", input_shape = (IMG_SIZE, IMG_SIZE, 1)))
+model.add(Conv2D(16, (3, 3), activation = "relu", input_shape = (img_size, img_size, 1)))
 model.add(MaxPooling2D(pool_size = (2, 2)))
 model.add(Dropout(.3))
 
@@ -46,7 +43,7 @@ model.compile(loss = "binary_crossentropy", optimizer = "adam", metrics = ["accu
 print("Model successfully compiled!!")
 
 print("Fitting the model...")
-model.fit(X, y, batch_size = 64, epochs = 3, validation_split = .2)
+model.fit(X, y, batch_size = 64, epochs = 5, validation_split = .2)
 print("Model successfully fitted!!")
 
 print("Saving the model...")
