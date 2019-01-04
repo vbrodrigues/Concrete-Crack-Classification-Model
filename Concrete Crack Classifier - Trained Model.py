@@ -22,9 +22,9 @@ print("Model predicting...")
 prediction = model.predict([prepare_image(img_to_prepare)])
 
 if prediction[0][0] <= .5:
-    pred_text = "Networks prediction:\nThis surface DOES have a crack on it."
+    pred_text = "Networks prediction:\nThis surface DOES have a crack on it. Confidence: {:.2f}%".format((1 - prediction[0][0]) * 100)
 elif prediction[0][0] > .5:
-    pred_text = "Networks prediction:\nThis surface DOES NOT have a crack on it."
+    pred_text = "Networks prediction:\nThis surface DOES NOT have a crack on it. Confidence: {:.2f}%".format((1 - prediction[0][0]) * 100)
 else:
     print("\nSomething went wrong...")
     
