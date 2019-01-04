@@ -5,13 +5,13 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-IMG_SIZE = 128
-img_to_prepare = "" #Insert the path to the image file you want to predict
+img_size = 128
+img_to_predict = "" #Insert the path to the image file you want to predict
 
 def prepare_image(file):
     img = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
-    img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
-    return img.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+    img = cv2.resize(img, (img_size, img_size))
+    return img.reshape(-1, img_size, img_size, 1)
 
 print("Loading trained model...")
 model = tf.keras.models.load_model(".../Concrete_Crack_Classification_model.model") #Replace the dots with the directory you saved the model in
@@ -28,7 +28,7 @@ elif prediction[0][0] > .5:
 else:
     print("\nSomething went wrong...")
     
-plt.imshow(cv2.resize(cv2.imread(img_to_predict), (IMG_SIZE, IMG_SIZE)))
+plt.imshow(cv2.resize(cv2.imread(img_to_predict), (img_size, img_size)))
 plt.title("What the Neural Network is receiving as input:")
 plt.text(2, 5, pred_text, fontweight = "bold")
 plt.show()
